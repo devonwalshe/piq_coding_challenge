@@ -24,8 +24,14 @@
   3. From `./dist/` execute: 
     
     $ spark-submit --packages org.apache.hadoop:hadoop-aws:2.7.1,org.postgresql:postgresql:9.4.1212\
-                  --py-files jobs.zip,libs.zip main.py
-                  --job filter_csv
+                   --py-files jobs.zip,libs.zip main.py\
+                   --job filter_csv
+		   
+  Run tests:
+		   
+    $ spark-submit --packages org.apache.hadoop:hadoop-aws:2.7.1,org.postgresql:postgresql:9.4.1212\
+                   --py-files jobs.zip,libs.zip main.py\
+                   --job filter_csv --test
 
   #### How it works
   

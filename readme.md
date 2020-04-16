@@ -21,7 +21,7 @@
 
   1. Fill in variables in `./src/jobs/filter_csv/conf.yaml.sample` and rename to `conf.yaml` in the same location
   2. Copy `./dist/*` files to master Spark/EMR node
-  3. run `pip install boto3` in your master node (couldn't get boto3 to play nicely on ubuntu as a packaged module on osx)
+  3. run `pip install boto3` in your master node (couldn't get boto3 to play nicely in an EMR / linux env as a zipped module from os x)
   4. From `./dist/` execute: 
     
     $ spark-submit --packages org.apache.hadoop:hadoop-aws:2.7.1,org.postgresql:postgresql:9.4.1212\

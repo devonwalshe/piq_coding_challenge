@@ -57,7 +57,7 @@
  - The `readme` didn't specify which amount to round (even though it was clear the `total_pymnt` col was the only one with higher precision) so just rounded all doubles. 
  - No single credit score column so used `last_fico_range_low` as the lower filtering boundary
   
-### Speculative additional work
+## Speculative additional work
   - Further processing of the dataset (casting columns with % signs as doubles, casting dates as dates etc)
   - No performance tuning on the spark cluster, parallelization of the files etc
   - Improve validation of CSV

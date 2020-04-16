@@ -1,0 +1,109 @@
+from pyspark.sql.types import *
+
+csv_schema = StructType().add('id', IntegerType())\
+.add('loan_amnt', DoubleType())\
+.add('funded_amnt', DoubleType())\
+.add('funded_amnt_inv', DoubleType())\
+.add('term', StringType())\
+.add('int_rate', StringType())\
+.add('installment', DoubleType())\
+.add('grade', StringType())\
+.add('sub_grade', StringType())\
+.add('emp_length', StringType())\
+.add('home_ownership', StringType())\
+.add('annual_inc', DoubleType())\
+.add('verification_status', StringType())\
+.add('issue_d', StringType())\
+.add('loan_status', StringType())\
+.add('desc', StringType())\
+.add('purpose', StringType())\
+.add('title', StringType())\
+.add('zip_code', StringType())\
+.add('addr_state', StringType())\
+.add('dti', DoubleType())\
+.add('delinq_2yrs', IntegerType())\
+.add('earliest_cr_line', StringType())\
+.add('fico_range_low', IntegerType())\
+.add('fico_range_high', IntegerType())\
+.add('inq_last_6mths', IntegerType())\
+.add('mths_since_last_delinq', IntegerType())\
+.add('mths_since_last_record', IntegerType())\
+.add('open_acc', IntegerType())\
+.add('pub_rec', IntegerType())\
+.add('revol_bal', DoubleType())\
+.add('revol_util', StringType())\
+.add('total_acc', IntegerType())\
+.add('initial_list_status', StringType())\
+.add('out_prncp', IntegerType())\
+.add('out_prncp_inv', IntegerType())\
+.add('total_pymnt', DoubleType())\
+.add('total_pymnt_inv', DoubleType())\
+.add('total_rec_prncp', DoubleType())\
+.add('total_rec_int', DoubleType())\
+.add('total_rec_late_fee', DoubleType())\
+.add('recoveries', DoubleType())\
+.add('collection_recovery_fee', DoubleType())\
+.add('last_pymnt_d', StringType())\
+.add('last_pymnt_amnt', DoubleType())\
+.add('next_pymnt_d', StringType())\
+.add('last_credit_pull_d', StringType())\
+.add('last_fico_range_high', IntegerType())\
+.add('last_fico_range_low', IntegerType())\
+.add('collections_12_mths_ex_med', IntegerType())\
+.add('mths_since_last_major_derog', StringType())\
+.add('policy_code', IntegerType())\
+.add('application_type', StringType())
+
+d_schema = [('addr_state', 'string'),
+ ('annual_inc', 'double'),
+ ('application_type', 'string'),
+ ('collection_recovery_fee', 'double'),
+ ('collections_12_mths_ex_med', 'int'),
+ ('delinq_2yrs', 'int'),
+ ('desc', 'string'),
+ ('dti', 'double'),
+ ('earliest_cr_line', 'string'),
+ ('emp_length', 'string'),
+ ('fico_range_high', 'int'),
+ ('fico_range_low', 'int'),
+ ('funded_amnt', 'double'),
+ ('funded_amnt_inv', 'double'),
+ ('grade', 'string'),
+ ('home_ownership', 'string'),
+ ('id', 'int'),
+ ('initial_list_status', 'string'),
+ ('inq_last_6mths', 'int'),
+ ('installment', 'double'),
+ ('int_rate', 'string'),
+ ('issue_d', 'string'),
+ ('last_credit_pull_d', 'string'),
+ ('last_fico_range_high', 'int'),
+ ('last_fico_range_low', 'int'),
+ ('last_pymnt_amnt', 'double'),
+ ('last_pymnt_d', 'string'),
+ ('loan_amnt', 'double'),
+ ('loan_status', 'string'),
+ ('mths_since_last_delinq', 'int'),
+ ('mths_since_last_major_derog', 'string'),
+ ('mths_since_last_record', 'int'),
+ ('next_pymnt_d', 'string'),
+ ('open_acc', 'int'),
+ ('out_prncp', 'int'),
+ ('out_prncp_inv', 'int'),
+ ('policy_code', 'int'),
+ ('pub_rec', 'int'),
+ ('purpose', 'string'),
+ ('recoveries', 'double'),
+ ('revol_bal', 'double'),
+ ('revol_util', 'string'),
+ ('sub_grade', 'string'),
+ ('term', 'string'),
+ ('title', 'string'),
+ ('total_acc', 'int'),
+ ('total_pymnt', 'double'),
+ ('total_pymnt_inv', 'double'),
+ ('total_rec_int', 'double'),
+ ('total_rec_late_fee', 'double'),
+ ('total_rec_prncp', 'double'),
+ ('verification_status', 'string'),
+ ('zip_code', 'string')]

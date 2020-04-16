@@ -16,14 +16,14 @@ def launch_cluster(conf=conf, cluster_name="piq_test_cluster"):
                   'Name': "Master",
                   'Market': 'ON_DEMAND',
                   'InstanceRole': 'MASTER',
-                  'InstanceType': 'c1.medium',
+                  'InstanceType': 'm4.large',
                   'InstanceCount': 1,
               },
               {
                   'Name': "Slave",
                   'Market': 'ON_DEMAND',
                   'InstanceRole': 'CORE',
-                  'InstanceType': 'c1.medium',
+                  'InstanceType': 'm4.large',
                   'InstanceCount': 1,
               }
           ],

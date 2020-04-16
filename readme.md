@@ -5,7 +5,7 @@
   - S3 bucket only has csv files in it with the same column names and roughly the same casting (errors are caught if not)
   - Client deploy-mode on spark
   - Data input to postgres is simply insert with no primary key constraint, as opposed to upsert/overwrite 
-  - AWS Roles 'EMR_EC2_DefaultRole' and 'EMR_DefaultRole' already present on account and the user alreaedy an EC2 keypair available
+  - AWS Roles 'EMR_EC2_DefaultRole' and 'EMR_DefaultRole' already present on account and the user already an EC2 keypair available
   
 ## Environment
 - Python 3.6.8

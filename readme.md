@@ -21,11 +21,18 @@
 
   1. Fill in variables in `./src/jobs/filter_csv/conf.yaml.sample` and rename to `conf.yaml` in the same location
   2. Copy `./dist/*` files to master Spark/EMR node
-  3. From `./dist/` execute: 
+  3. run `pip install boto3` in your master node (couldn't get boto3 to play nicely in an EMR / linux env as a zipped module from os x)
+  4. From `./dist/` execute: 
     
     $ spark-submit --packages org.apache.hadoop:hadoop-aws:2.7.1,org.postgresql:postgresql:9.4.1212\
-                  --py-files jobs.zip,libs.zip main.py
-                  --job filter_csv
+                   --py-files jobs.zip,libs.zip main.py\
+                   --job filter_csv
+		   
+  Run tests:
+		   
+    $ spark-submit --packages org.apache.hadoop:hadoop-aws:2.7.1,org.postgresql:postgresql:9.4.1212\
+                   --py-files jobs.zip,libs.zip main.py\
+                   --job filter_csv --test
 
   #### How it works
   
@@ -57,7 +64,7 @@
  - The `readme` didn't specify which amount to round (even though it was clear the `total_pymnt` col was the only one with higher precision) so just rounded all doubles. 
  - No single credit score column so used `last_fico_range_low` as the lower filtering boundary
   
-### Speculative additional work
+## Speculative additional work
   - Further processing of the dataset (casting columns with % signs as doubles, casting dates as dates etc)
   - No performance tuning on the spark cluster, parallelization of the files etc
   - Improve validation of CSV

@@ -5,7 +5,7 @@
   - S3 bucket only has csv files in it with the same column names and roughly the same casting (errors are caught if not)
   - Client deploy-mode on spark
   - Data input to postgres is simply insert with no primary key constraint, as opposed to upsert/overwrite 
-  - AWS Roles 'EMR_EC2_DefaultRole' and 'EMR_DefaultRole' already present on account and the user alreaedy an EC2 keypair available
+  - AWS Roles 'EMR_EC2_DefaultRole' and 'EMR_DefaultRole' already present on account and the user already an EC2 keypair available
   
 ## Environment
 - Python 3.6.8
@@ -19,10 +19,11 @@
 ## Running the job
 ### Task 1 - Spark Application:
 
-  1. Fill in variables in `./src/jobs/filter_csv/conf.yaml.sample` and rename to `conf.yaml` in the same location
-  2. Copy `./dist/*` files to master Spark/EMR node
-  3. run `pip install boto3` in your master node (couldn't get boto3 to play nicely in an EMR / linux env as a zipped module from os x)
-  4. From `./dist/` execute: 
+  1. Bootstrap postgres database `piq` & table `loans` with `$ psql -f ./bootstrap_piq.sql`
+  2. Fill in conf variables in `./src/jobs/filter_csv/conf.yaml.sample` and rename to `conf.yaml` in the same location
+  3. Copy `./dist/*` files to master Spark/EMR node
+  4. run `pip install boto3` in your master node (couldn't get boto3 to play nicely in an EMR / linux env as a zipped module from os x)
+  5. From `./dist/` execute: 
     
     $ spark-submit --packages org.apache.hadoop:hadoop-aws:2.7.1,org.postgresql:postgresql:9.4.1212\
                    --py-files jobs.zip,libs.zip main.py\
@@ -40,7 +41,7 @@
   
   Definitely overkill for this simple task but wanted to demonstrate where I'm at with writing production spark jobs. 
   
-  - Code changes are repackaged with the supplied makefile, using the command `make clean build` and sent to the `dist/` directory 
+  - Code changes are repackaged with the supplied Makefile, using the command `make clean build` and sent to the `dist/` directory 
  - `main.py` accepts arguments `--job`, `--test` and `--job-args` if you want to send any arbitrary kwargs
  -  `--job` specifies the name of job to run, which is searched for in /src/jobs/, and executes the function `analyze` inside that jobs `__init__.py`
  - `--test` runs a `test` function inside the jobs `__init__.py` instead of `analyze` to return your tests

@@ -48,9 +48,9 @@
  - `--job-args` specify arbitrary runtime arguments to send to the `analyze` function, ie environment variables or other application specific config
   
   - Implemented a `Pipeline` class that handles the ETL tasks. Starting off using with a paged generator for reading a potentially infinite number of csv files from the bucket. `Pipeline` implements a `run()` method which pipes individual object keys from the generator and output (initially a csv file then a spark dataframe) through a chain of methods:
-     - `load_csv()` > `validate_df()` > `process_df()` > `filter_df()` > `postprocess()`
+     - `load_csv()` > `validate_df()` > `process_df()` > `filter_df()` > `save_df()` > `postprocess()`
   
-  - Postprocessing removes the csv from the bucket so running the pipeline is _roughly_ idempotent
+  - Postprocessing removes the csv from the bucket after its saved so running the pipeline is _roughly_ idempotent
     
   ### Task 2 - launch EMR cluster:
   Make sure aws configuration availables are set in the conf file.
